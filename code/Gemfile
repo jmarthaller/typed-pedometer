@@ -3,3 +3,6 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'thin'
 gem 'rack-test' 
+gem 'sorbet', :group => :development
+gem 'sorbet-runtime'
+gem 'tapioca', require: false, :group => :development
