@@ -4,6 +4,11 @@ Dir['./models/*', './helpers/*'].each {|file| require_relative file }
 
 include ViewHelper
 
+get '/' do 
+  landing_page = "Welcome!"
+  landing_page
+end
+
 get '/uploads' do
   @error = "A #{params[:error]} error has occurred." if params[:error]
   @pipelines = Upload.all.inject([]) do |a, upload|
