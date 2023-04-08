@@ -1,11 +1,11 @@
-# typed: false
+# typed: true
 require_relative 'user'
 require_relative 'trial'
 
 class Analyzer
-  # extend T::Sig
+  extend T::Sig
 
-  THRESHOLD = 0.09
+  THRESHOLD = T.let(0.09, Float)
 
   attr_reader :steps, :delta, :distance, :time
 
@@ -18,16 +18,17 @@ class Analyzer
     analyzer
   end
 
+  # sig {params(data: Data, user: User, trial: Trial).void}
   def initialize(data, user, trial)
     @data  = data
     @user  = user
     @trial = trial
   end
 
-  sig {params(count_steps: T::Boolean).returns(T::Boolean)}
-  def measure_steps(count_steps = true)
+  # sig {(count_steps: T::Boolean).returns(T::Boolean)}
+  def measure_steps
     @steps = 0
-    # count_steps = true
+    count_steps = T.let(true, T::Boolean)
 
     @data.each_with_index do |data, i|
       if (data >= THRESHOLD) && (@data[i-1] < THRESHOLD)
