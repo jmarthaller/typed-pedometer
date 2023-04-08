@@ -1,3 +1,4 @@
+# typed: false
 require 'sinatra'
 
 Dir['./models/*', './helpers/*'].each {|file| require_relative file }

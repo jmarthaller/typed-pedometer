@@ -1,7 +1,9 @@
+# typed: false
 require_relative 'user'
 require_relative 'trial'
 
 class Analyzer
+  # extend T::Sig
 
   THRESHOLD = 0.09
 
@@ -22,9 +24,10 @@ class Analyzer
     @trial = trial
   end
 
-  def measure_steps
+  sig {params(count_steps: T::Boolean).returns(T::Boolean)}
+  def measure_steps(count_steps = true)
     @steps = 0
-    count_steps = true
+    # count_steps = true
 
     @data.each_with_index do |data, i|
       if (data >= THRESHOLD) && (@data[i-1] < THRESHOLD)
