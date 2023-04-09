@@ -1,4 +1,7 @@
+# typed: false
+
 class Filter
+  extend T::Sig
 
     COEFFICIENTS_LOW_0_HZ = {
       alpha: [1, -1.979133761292768, 0.979521463540373],
@@ -12,7 +15,8 @@ class Filter
       alpha: [1, -1.905384612118461, 0.910092542787947],
       beta:  [0.953986986993339, -1.907503180919730, 0.953986986993339]
     }
-  
+    
+    sig {params(data: T::Array[Float]).returns(T::Array[Float])}
     def self.low_0_hz(data)
       filter(data, COEFFICIENTS_LOW_0_HZ)
     end
