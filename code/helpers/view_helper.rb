@@ -1,5 +1,4 @@
 module ViewHelper
-
     DISTANCE = { cm_per_m: 100, cm_per_km: 100000, m_per_km: 1000 }
     DECIMAL_PLACES = 2
   
